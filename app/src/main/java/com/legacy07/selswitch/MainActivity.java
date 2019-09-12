@@ -33,11 +33,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (runcommand("su -c 'getenforce'").contains("Enforcing")) {
-                    //  Executer("su -c 'setenforce 0'");
                     runcommand("su -c " + '"' + '"' + "setenforce 0" + '"' + '"');
                     aSwitch.setChecked(false);
                 } else {
-                    //   Executer("su -c 'setenforce 1'");
                     runcommand("su -c " + '"' + '"' + "setenforce 1" + '"' + '"');
                     aSwitch.setChecked(true);
                 }
