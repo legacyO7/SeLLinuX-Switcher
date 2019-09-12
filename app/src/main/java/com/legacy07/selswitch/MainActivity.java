@@ -22,10 +22,19 @@ public class MainActivity extends AppCompatActivity {
         tv = findViewById(R.id.tv);
         aSwitch = findViewById(R.id.selswitch);
 
+        if (runcommand("su -c 'getenforce'").equals(""))
+        {
+            tv.setText("No Root Detected");
+            tv.setTextSize(30);
+            aSwitch.setVisibility(View.INVISIBLE);
+        }
+
 
         if (runcommand("su -c 'getenforce'").contains("Enforcing")) {
             aSwitch.setChecked(true);
         }
+
+
 
         aSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
