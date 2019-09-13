@@ -1,12 +1,15 @@
 package com.legacy07.selswitch;
 
+import android.app.Activity;
 import android.content.res.AssetManager;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -15,22 +18,26 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
-    Switch aSwitch;
+    CheckBox aSwitch;
     Typeface typeface, typeface1;
     AssetManager am, am1;
-    TextView tv, banner, title, ii;
-    Animation aniFade, aniBlink, aniZoomin, aniZoomout, aniMove, aniSlup, aniSldn;
+    TextView tv, banner, title,tv11;
+    Animation aniFade, aniBlink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         tv = findViewById(R.id.tv);
+        tv11=findViewById(R.id.textView2);
         title = findViewById(R.id.textView);
         aSwitch = findViewById(R.id.selswitch);
         banner = findViewById(R.id.legacy);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         am = getApplicationContext().getAssets();
         typeface = Typeface.createFromAsset(am, String.format(Locale.US, "fonts/%s", "GreatVibes-Regular.otf"));
@@ -40,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         title.setTypeface(typeface);
         aSwitch.setTypeface(typeface);
+        tv11.setTypeface(typeface);
 
         tv.setTypeface(typeface1);
         //banner.setTypeface(typeface1);
